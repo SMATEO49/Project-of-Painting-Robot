@@ -1,0 +1,418 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.07 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.07 secs
+ 
+--> Reading design: main.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "main.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "main"
+Output Format                      : NGC
+Target Device                      : xc3s200-5-ft256
+
+---- Source Options
+Top Module Name                    : main
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 8
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "D:/Projects/ProjektMateuszSiebiatynski/main.vhd" in Library work.
+Entity <main> compiled.
+Entity <main> (Architecture <arch>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <main> in library <work> (architecture <arch>).
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <main> in library <work> (Architecture <arch>).
+WARNING:Xst:819 - "D:/Projects/ProjektMateuszSiebiatynski/main.vhd" line 70: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <work>, <curr_state>
+WARNING:Xst:819 - "D:/Projects/ProjektMateuszSiebiatynski/main.vhd" line 113: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <START>, <STOP>, <work>, <curr_state>
+Entity <main> analyzed. Unit <main> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <main>.
+    Related source file is "D:/Projects/ProjektMateuszSiebiatynski/main.vhd".
+WARNING:Xst:1306 - Output <S1> is never assigned.
+WARNING:Xst:647 - Input <C1> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <C2> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1780 - Signal <material> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+    Found finite state machine <FSM_0> for signal <curr_state>.
+    -----------------------------------------------------------------------
+    | States             | 5                                              |
+    | Transitions        | 10                                             |
+    | Inputs             | 5                                              |
+    | Outputs            | 4                                              |
+    | Clock              | clk                       (rising_edge)        |
+    | Power Up State     | st0                                            |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+WARNING:Xst:737 - Found 1-bit latch for signal <work>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 20-bit adder for signal <factor>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   1 Adder/Subtractor(s).
+Unit <main> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 1
+ 20-bit adder                                          : 1
+# Latches                                              : 1
+ 1-bit latch                                           : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <curr_state/FSM> on signal <curr_state[1:3]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ st0   | 000
+ st1   | 001
+ st2   | 011
+ st3   | 010
+ st4   | 110
+-------------------
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 1
+# Adders/Subtractors                                   : 1
+ 20-bit adder                                          : 1
+# Latches                                              : 1
+ 1-bit latch                                           : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:2170 - Unit main : the following signal(s) form a combinatorial loop: Madd_factor_lut<0>, curr_state_cmp_eq0002, curr_state_FSM_FFd3-In, factor<0>.
+WARNING:Xst:2170 - Unit main : the following signal(s) form a combinatorial loop: factor<12>.
+WARNING:Xst:2170 - Unit main : the following signal(s) form a combinatorial loop: factor<5>.
+WARNING:Xst:2170 - Unit main : the following signal(s) form a combinatorial loop: factor<2>.
+WARNING:Xst:2170 - Unit main : the following signal(s) form a combinatorial loop: factor<19>.
+WARNING:Xst:2170 - Unit main : the following signal(s) form a combinatorial loop: factor<18>.
+WARNING:Xst:2170 - Unit main : the following signal(s) form a combinatorial loop: factor<6>.
+WARNING:Xst:2170 - Unit main : the following signal(s) form a combinatorial loop: factor<14>.
+WARNING:Xst:2170 - Unit main : the following signal(s) form a combinatorial loop: factor<11>.
+WARNING:Xst:2170 - Unit main : the following signal(s) form a combinatorial loop: factor<17>.
+WARNING:Xst:2170 - Unit main : the following signal(s) form a combinatorial loop: factor<4>.
+WARNING:Xst:2170 - Unit main : the following signal(s) form a combinatorial loop: factor<1>.
+WARNING:Xst:2170 - Unit main : the following signal(s) form a combinatorial loop: factor<15>.
+WARNING:Xst:2170 - Unit main : the following signal(s) form a combinatorial loop: factor<7>.
+WARNING:Xst:2170 - Unit main : the following signal(s) form a combinatorial loop: factor<9>.
+WARNING:Xst:2170 - Unit main : the following signal(s) form a combinatorial loop: factor<8>.
+WARNING:Xst:2170 - Unit main : the following signal(s) form a combinatorial loop: factor<13>.
+WARNING:Xst:2170 - Unit main : the following signal(s) form a combinatorial loop: factor<16>.
+WARNING:Xst:2170 - Unit main : the following signal(s) form a combinatorial loop: factor<10>.
+WARNING:Xst:2170 - Unit main : the following signal(s) form a combinatorial loop: factor<3>.
+
+Optimizing unit <main> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block main, actual ratio is 1.
+Latch work has been replicated 1 time(s) to handle iob=true attribute.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 3
+ Flip-Flops                                            : 3
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : main.ngr
+Top Level Output File Name         : main
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 11
+
+Cell Usage :
+# BELS                             : 78
+#      GND                         : 1
+#      LUT1                        : 19
+#      LUT2                        : 1
+#      LUT3                        : 6
+#      LUT4                        : 11
+#      LUT4_L                      : 1
+#      MUXCY                       : 19
+#      XORCY                       : 20
+# FlipFlops/Latches                : 5
+#      FD                          : 2
+#      FDS                         : 1
+#      LDP                         : 2
+# Clock Buffers                    : 2
+#      BUFGP                       : 2
+# IO Buffers                       : 6
+#      IBUF                        : 1
+#      OBUF                        : 5
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s200ft256-5 
+
+ Number of Slices:                       21  out of   1920     1%  
+ Number of Slice Flip Flops:              4  out of   3840     0%  
+ Number of 4 input LUTs:                 38  out of   3840     0%  
+ Number of IOs:                          11
+ Number of bonded IOBs:                   8  out of    173     4%  
+    IOB Flip Flops:                       1
+ Number of GCLKs:                         2  out of      8    25%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+STOP                               | BUFGP                  | 2     |
+clk                                | BUFGP                  | 3     |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+START                              | IBUF                   | 2     |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 3.627ns (Maximum Frequency: 275.687MHz)
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: 7.896ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 3.627ns (frequency: 275.687MHz)
+  Total number of paths / destination ports: 9 / 4
+-------------------------------------------------------------------------
+Delay:               3.627ns (Levels of Logic = 1)
+  Source:            curr_state_FSM_FFd1 (FF)
+  Destination:       curr_state_FSM_FFd2 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: curr_state_FSM_FFd1 to curr_state_FSM_FFd2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               4   0.626   0.949  curr_state_FSM_FFd1 (curr_state_FSM_FFd1)
+     LUT4:I1->O            1   0.479   0.681  curr_state_FSM_FFd2-In14 (curr_state_FSM_FFd2-In14)
+     FDS:S                     0.892          curr_state_FSM_FFd2
+    ----------------------------------------
+    Total                      3.627ns (1.997ns logic, 1.630ns route)
+                                       (55.1% logic, 44.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'STOP'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              6.141ns (Levels of Logic = 1)
+  Source:            work_1 (LATCH)
+  Destination:       P1 (PAD)
+  Source Clock:      STOP falling
+
+  Data Path: work_1 to P1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LDP:G->Q              1   0.551   0.681  work_1 (work_1)
+     OBUF:I->O                 4.909          P1_OBUF (P1)
+    ----------------------------------------
+    Total                      6.141ns (5.460ns logic, 0.681ns route)
+                                       (88.9% logic, 11.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 7 / 3
+-------------------------------------------------------------------------
+Offset:              7.896ns (Levels of Logic = 2)
+  Source:            curr_state_FSM_FFd3 (FF)
+  Destination:       M2<0> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: curr_state_FSM_FFd3 to M2<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               7   0.626   1.201  curr_state_FSM_FFd3 (curr_state_FSM_FFd3)
+     LUT3:I0->O            1   0.479   0.681  curr_state_FSM_Out11 (M2_0_OBUF)
+     OBUF:I->O                 4.909          M2_0_OBUF (M2<0>)
+    ----------------------------------------
+    Total                      7.896ns (6.014ns logic, 1.882ns route)
+                                       (76.2% logic, 23.8% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 3.00 secs
+Total CPU time to Xst completion: 3.74 secs
+ 
+--> 
+
+Total memory usage is 4499564 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   27 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+
